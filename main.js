@@ -9,3 +9,5 @@ function getComputerChoice() {
   }
 }
 
+let playerSelection = prompt("Take Your Turn");
+playerSelection = playerSelection.toLowerCase();
