@@ -9,18 +9,27 @@ function getComputerChoice() {
   }
 }
 
-let playerSelection = prompt("Take Your Turn");
-playerSelection = playerSelection.toLowerCase();
-const computerSelection = getComputerChoice();
 
-function playRound(player, computer) {
-  if (player === computer) { 
-    return 'Tie!';
-  } else if (player === 'rock' && computer === 'scissors' || 
-             player === 'scissors' && computer === 'paper' ||
-             player === 'paper' && computer === 'rock') {
+function playRound() {
+  let playerSelection = prompt("Take Your Turn");
+  playerSelection = playerSelection.toLowerCase();
+  const computerSelection = getComputerChoice();
+  
+  if (playerSelection === computerSelection) { 
+      return 'Tie!';
+  } else if (
+      playerSelection === 'rock' && computerSelection === 'scissors' || 
+      playerSelection === 'scissors' && computerSelection === 'paper' ||
+      playerSelection === 'paper' && computerSelection === 'rock') {
       return 'You win!';
   } else {
       return 'You lose!'
   }
+}
+
+
+function game(n) {
+  for (let i = 0; i < n; i++) {
+    console.log(playRound());
+ }
 }
