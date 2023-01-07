@@ -14,7 +14,6 @@ choiceButtons.forEach(button => {
 });
 
 
-
 function isGameOver() {
   if (playerScore === 5 || cpuScore === 5) return true;
   else return false;
@@ -35,6 +34,37 @@ function clickHandle(e) {
     declareWinner();
     playAgain();
   }
+}
+
+
+function playRound(playerSelection, cpuSelection) {
+  let whoIsWinner;
+  const cpuWinCases = [ 
+    ['rock', 'scissors'], 
+    ['scissors', 'paper'], 
+    ['paper', 'rock'] 
+  ];
+  
+  if (playerSelection === cpuSelection) {
+    whoIsWinner = 'tie';
+    cpuScore++
+    playerScore++
+  } else if (function isPlayerWin() {
+      for (let i = 0; i < cpuWinCases; i++) {
+        if (cpuSelection === cpuWinCases[i][0] && playerSelection === cpuWinCases[i][1]) {
+          return true;
+        }
+      }
+      return false;
+    }) {
+      whoIsWinner = 'cpu';
+      cpuScore++
+  } else {
+      whoIsWinner = 'player';
+      playerScore++
+  }
+
+  return whoIsWinner;
 }
 
 
@@ -91,69 +121,3 @@ function updateScores() {
 function capitalize(s) {
   return s.charAt(0).toUpperCase() + s.slice(1);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function playRound(playerSelection, cpuSelection) {
-  let whoIsWinner;
-  const cpuWinCases = [ 
-    ['rock', 'scissors'], 
-    ['scissors', 'paper'], 
-    ['paper', 'rock'] 
-  ];
-  
-  if (playerSelection === cpuSelection) {
-    whoIsWinner = 'tie';
-    cpuScore++
-    playerScore++
-  } else if (function isPlayerWin() {
-      for (let i = 0; i < cpuWinCases; i++) {
-        if (cpuSelection === cpuWinCases[i][0] && playerSelection === cpuWinCases[i][1]) {
-          return true;
-        }
-      }
-      return false;
-    }) {
-      whoIsWinner = 'cpu';
-      cpuScore++
-  } else {
-      whoIsWinner = 'player';
-      playerScore++
-  }
-
-  return whoIsWinner;
-}
-
-
-
-
-
