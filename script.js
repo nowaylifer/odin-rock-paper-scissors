@@ -38,7 +38,6 @@ function clickHandle(e) {
 
 
 function playRound(playerSelection, cpuSelection) {
-  let whoIsWinner;
   const cpuWinCases = [ 
     ['rock', 'scissors'], 
     ['scissors', 'paper'], 
@@ -46,25 +45,20 @@ function playRound(playerSelection, cpuSelection) {
   ];
   
   if (playerSelection === cpuSelection) {
-    whoIsWinner = 'tie';
     cpuScore++
     playerScore++
-  } else if ((function() {
-      for (let i = 0; i < cpuWinCases.length; i++) {
-        if (cpuSelection === cpuWinCases[i][0] && playerSelection === cpuWinCases[i][1]) {
-          return true;
-        }
-      }
-      return false;
-    })()) {
-      whoIsWinner = 'cpu';
-      cpuScore++
-  } else {
-      whoIsWinner = 'player';
-      playerScore++
+    return "tie";
   }
 
-  return whoIsWinner;
+  for (let i = 0; i < cpuWinCases.length; i++) {
+    if (cpuSelection === cpuWinCases[i][0] && playerSelection === cpuWinCases[i][1]) {
+      cpuScore++
+      return "cpu";
+    }
+  }
+
+  playerScore++
+  return "player";
 }
 
 
