@@ -49,14 +49,14 @@ function playRound(playerSelection, cpuSelection) {
     whoIsWinner = 'tie';
     cpuScore++
     playerScore++
-  } else if (function isPlayerWin() {
-      for (let i = 0; i < cpuWinCases; i++) {
+  } else if ((function() {
+      for (let i = 0; i < cpuWinCases.length; i++) {
         if (cpuSelection === cpuWinCases[i][0] && playerSelection === cpuWinCases[i][1]) {
           return true;
         }
       }
       return false;
-    }) {
+    })()) {
       whoIsWinner = 'cpu';
       cpuScore++
   } else {
@@ -72,7 +72,7 @@ function updateRoundResult(winner, playerSelection, cpuSelection) {
   updateScores();
   
   if (winner === 'tie') {
-    roundResultShown.textContent = `Tie!. You both threw ${playerSelection}.`
+    roundResultShown.textContent = `Tie! You both threw ${playerSelection}.`
   } else if (winner === 'cpu') {
     roundResultShown.textContent = `You lose! ${capitalize(cpuSelection)} beats ${playerSelection}.`;
   } else if (winner === 'player') {
