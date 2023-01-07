@@ -79,7 +79,9 @@ function declareWinner() {
   let winnerShown = document.createElement('div');
   winnerShown.id = 'winner-shown';
   
-  if (playerScore > cpuScore) {
+  if (playerScore === cpuScore) {
+    winnerShown.textContent = "It's a draw! Incredible!"
+  } else if (playerScore > cpuScore) {
     winnerShown.textContent = "You win game! Congrats!";
   } else {
     winnerShown.textContent = "You lose game! Shame!";
@@ -96,13 +98,18 @@ function playAgain() {
   document.body.appendChild(playAgainButton);
 
   playAgainButton.addEventListener('click', () => {
-    document.getElementById('winner-shown').remove();
-    roundResultShown.textContent = "";
-    playerScore = 0;
-    cpuScore = 0;
-    updateScores();
+    gameReset();
     playAgainButton.remove();
   });
+}
+
+
+function gameReset() {
+  document.getElementById('winner-shown').remove();
+  roundResultShown.textContent = "";
+  playerScore = 0;
+  cpuScore = 0;
+  updateScores();
 }
 
 
